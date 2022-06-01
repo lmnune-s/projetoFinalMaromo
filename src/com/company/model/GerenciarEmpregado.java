@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciarEmpregado {
-    public List<Empregado> listaEmpregados;
+    public List<Empregado> listaEmpregados = new ArrayList<Empregado>();
 
     public void adcionarEmpregado(Empregado empregado){
-        listaEmpregados = new ArrayList<Empregado>();
         listaEmpregados.add(empregado);
     }
 

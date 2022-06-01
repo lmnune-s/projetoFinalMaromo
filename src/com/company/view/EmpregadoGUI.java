@@ -26,7 +26,7 @@ public class EmpregadoGUI {
     private JPanel JPanelTelaCadastro;
 
     public Empregado empregado;
-    public GerenciarEmpregado ge;
+    public GerenciarEmpregado ge = new GerenciarEmpregado();
     public ParametrosInss inss;
 
     public JPanel getPanelTelaCadastro(){
@@ -43,10 +43,10 @@ public class EmpregadoGUI {
         calcularRecolhimentoINSSButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                textFieldCodigoEmpregado.setText(String.valueOf(1));
-//                textFieldNomeEmpregado.setText("Nome do caboclo");
-//                textFieldSetor.setText("Logistica");
-//                textFieldSalarioBruto.setText(String.valueOf(1500));
+                textFieldCodigoEmpregado.setText(String.valueOf(1));
+                textFieldNomeEmpregado.setText("Nome do caboclo");
+                textFieldSetor.setText("Logistica");
+                textFieldSalarioBruto.setText(String.valueOf(1500));
                 CalcularRecolhimentoInss();
             }
         });
@@ -82,8 +82,8 @@ public class EmpregadoGUI {
 
     public void validaButton(){
         JOptionPane.showMessageDialog(null,
-                "Depósito efetuado com sucesso",
-                "Depósito - Sucesso",
+                "Cadastro realizado com sucesso",
+                "Empregado cadastrado",
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -122,8 +122,13 @@ public class EmpregadoGUI {
         recolhimento += (inss.LIMITEFAIXA4-inss.LIMITEFAIXA3) * inss.FAIXA4;
         return recolhimento;
     }
+
     public void abrirGrupoEmpregados(){
         try {
+            JFrame gerenciarEmpregado = new JFrame();
+            gerenciarEmpregado.setContentPane(new GerenciarEmpregadosGUI().getPanelEmpregados());
+            gerenciarEmpregado.setSize(500,350);
+            gerenciarEmpregado.setVisible(true);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,9 +136,9 @@ public class EmpregadoGUI {
     }
 
     public void adicionarEmpregado(){
-        ge = new GerenciarEmpregado();
         ge.adcionarEmpregado(empregado);
-        System.out.println(ge.listarTodosEmpregados());
-
+        for (Empregado emp: ge.listaEmpregados) {
+            System.out.println(emp);
+        }
     }
 }
