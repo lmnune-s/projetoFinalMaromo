@@ -18,19 +18,11 @@ public class GerenciarEmpregadosGUI {
 
     public static GerenciarEmpregado ge;
 
-//    public void empregadoLista(){
-//        for (Empregado emp: listaEmpregados) {
-//
-//        }
-//    }
-
 
     public GerenciarEmpregadosGUI() {
         criarTabela();
-//        addRowToJTable();
     }
 
-    String data [] = {"1", "2", "3", "4", "5"};
 
 
 
@@ -44,7 +36,6 @@ public class GerenciarEmpregadosGUI {
     private void createUIComponents() {
         // TODO: place custom component creation code here
         String header[] = {"Codigo", "Nome", "Setor", "Salario Bruto", "Recolhimento"};
-        String data [] = {"1", "2", "3", "4", "5"};
         DefaultTableModel model = new DefaultTableModel(0,4);
         model.setColumnIdentifiers(header);
         table1 = new JTable(model);
@@ -55,7 +46,5 @@ public class GerenciarEmpregadosGUI {
             };
             model.addRow(row);
         }
-//        model.addRow(data);
-
     }
 }

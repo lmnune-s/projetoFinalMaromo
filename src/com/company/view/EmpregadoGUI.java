@@ -48,10 +48,10 @@ public class EmpregadoGUI {
         calcularRecolhimentoINSSButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                textFieldCodigoEmpregado.setText(String.valueOf(1));
-                textFieldNomeEmpregado.setText("Nome do caboclo");
-                textFieldSetor.setText("Logistica");
-                textFieldSalarioBruto.setText(String.valueOf(1500));
+//                textFieldCodigoEmpregado.setText(String.valueOf(1));
+//                textFieldNomeEmpregado.setText("Nome do caboclo");
+//                textFieldSetor.setText("Logistica");
+//                textFieldSalarioBruto.setText(String.valueOf(1500));
                 CalcularRecolhimentoInss();
             }
         });
@@ -81,6 +81,7 @@ public class EmpregadoGUI {
 
 
         }catch (Exception e){
+            mensagemInformativa();
             System.out.println(e);
         }
     }
@@ -141,9 +142,45 @@ public class EmpregadoGUI {
     }
 
     public void adicionarEmpregado(){
-        ge.adcionarEmpregado(empregado);
-        for (Empregado emp: ge.listaEmpregados) {
-            System.out.println(emp);
+        if(validaCampos()){
+            ge.adcionarEmpregado(empregado);
+            ge.listarTodosEmpregados();
+            validaButton();
+            LimparCampos();
         }
+    }
+
+    public void LimparCampos(){
+        textFieldCodigoEmpregado.setText("");
+        textFieldNomeEmpregado.setText("");
+        textFieldSetor.setText("");
+        textFieldSalarioBruto.setText("");
+        LabelValorRecolhido.setText("");
+    }
+
+    public boolean validaCampos(){
+        if (empregado == null){
+            mensagemErro();
+            return false;
+        }
+        if ((empregado.getNomeEmpregado() == null) && (empregado.getSetor()==null)){
+            mensagemErro();
+            return false;
+        }
+        return true;
+    }
+
+    public void mensagemErro(){
+        JOptionPane.showMessageDialog(null,
+                "Todos os campos devem estar preenchidos",
+                "Campos não preenchidos",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void mensagemInformativa(){
+        JOptionPane.showMessageDialog(null,
+                "Verifique as informações dos campos",
+                "Informações inválidas",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }
