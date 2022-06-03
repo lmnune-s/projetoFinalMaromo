@@ -5,11 +5,8 @@ import com.company.model.GerenciarEmpregado;
 import com.company.model.ParametrosInss;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 public class EmpregadoGUI {
     private JTextField textFieldNomeEmpregado;
@@ -75,8 +72,7 @@ public class EmpregadoGUI {
             empregado.setNomeEmpregado(nome);
             empregado.setSetor(setor);
             empregado.setSalarioBruto(salarioBruto);
-            empregado.setRecInss(calcularRecolhimento(salarioBruto));
-
+            empregado.setRecInss(valorRecolhimentoInss(salarioBruto));
             LabelValorRecolhido.setText(String.valueOf(empregado.getRecInss()));
 
 
@@ -86,14 +82,7 @@ public class EmpregadoGUI {
         }
     }
 
-    public void validaButton(){
-        JOptionPane.showMessageDialog(null,
-                "Cadastro realizado com sucesso",
-                "Empregado cadastrado",
-                JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    public double calcularRecolhimento(double salarioBruto){
+    public double valorRecolhimentoInss(double salarioBruto){
         double recolhimento = 0.0;
 
         // LIMITE FAIXA 1
@@ -145,7 +134,6 @@ public class EmpregadoGUI {
         if(validaCampos()){
             ge.adcionarEmpregado(empregado);
             ge.listarTodosEmpregados();
-            validaButton();
             LimparCampos();
         }
     }
@@ -159,18 +147,25 @@ public class EmpregadoGUI {
     }
 
     public boolean validaCampos(){
-        if (empregado == null){
+        if ((empregado.getNomeEmpregado() == null) && (empregado.getSetor()==null)){
             mensagemErro();
             return false;
         }
-        if ((empregado.getNomeEmpregado() == null) && (empregado.getSetor()==null)){
+        if (empregado == null){
             mensagemErro();
             return false;
         }
         return true;
     }
 
-    public void mensagemErro(){
+    public static void mensagemSucesso(){
+        JOptionPane.showMessageDialog(null,
+                "Cadastro realizado com sucesso",
+                "Empregado cadastrado",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void mensagemErro(){
         JOptionPane.showMessageDialog(null,
                 "Todos os campos devem estar preenchidos",
                 "Campos não preenchidos",

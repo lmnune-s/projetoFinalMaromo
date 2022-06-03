@@ -18,20 +18,9 @@ public class GerenciarEmpregadosGUI {
 
     public static GerenciarEmpregado ge;
 
-
-    public GerenciarEmpregadosGUI() {
-        criarTabela();
-    }
-
-
-
-
-    public void criarTabela() {}
-
     public JPanel getPanelEmpregados() {
         return panelEmpregados;
     }
-
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
@@ -47,4 +36,5 @@ public class GerenciarEmpregadosGUI {
             model.addRow(row);
         }
     }
+
 }

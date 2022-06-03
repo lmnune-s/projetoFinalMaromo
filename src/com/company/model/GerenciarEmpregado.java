@@ -1,5 +1,7 @@
 package com.company.model;
 
+import com.company.view.EmpregadoGUI;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,9 @@ public class GerenciarEmpregado {
     public void adcionarEmpregado(Empregado empregado){
         if(verificarExistencia(empregado)){
             listaEmpregados.add(empregado);
+            EmpregadoGUI.mensagemSucesso();
         }else {
+            EmpregadoGUI.mensagemErro();
             System.out.println("Usuario já Cadastrado!");
         }
     }
