@@ -5,8 +5,11 @@ import com.company.model.GerenciarEmpregado;
 import com.company.model.ParametrosInss;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmpregadoGUI {
     private JTextField textFieldNomeEmpregado;
@@ -24,10 +27,12 @@ public class EmpregadoGUI {
     private JLabel LabelReais;
     private JLabel LabelValorRecolhido;
     private JPanel JPanelTelaCadastro;
+    private JTable table1;
 
     public Empregado empregado;
     public GerenciarEmpregado ge = new GerenciarEmpregado();
     public ParametrosInss inss;
+
 
     public JPanel getPanelTelaCadastro(){
         return JPanelTelaCadastro;
