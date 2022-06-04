@@ -24,11 +24,14 @@ public class EmpregadoGUI {
     private JLabel LabelReais;
     private JLabel LabelValorRecolhido;
     private JPanel JPanelTelaCadastro;
+    private JButton buscarButton;
+    private JButton deletarButton;
     private JTable table1;
 
     public Empregado empregado;
     public GerenciarEmpregado ge = new GerenciarEmpregado();
     public ParametrosInss inss;
+//    Integer i=0;
 
 
     public JPanel getPanelTelaCadastro(){
@@ -45,7 +48,7 @@ public class EmpregadoGUI {
         calcularRecolhimentoINSSButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                textFieldCodigoEmpregado.setText(String.valueOf(1));
+//                textFieldCodigoEmpregado.setText(String.valueOf(i++));
 //                textFieldNomeEmpregado.setText("Nome do caboclo");
 //                textFieldSetor.setText("Logistica");
 //                textFieldSalarioBruto.setText(String.valueOf(1500));
@@ -56,6 +59,38 @@ public class EmpregadoGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                adicionarEmpregado();
+            }
+        });
+
+        buscarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Integer codigoBusca = Integer.valueOf(textFieldCodigoEmpregado.getText());
+                for (Empregado emp: GerenciarEmpregado.listaEmpregados) {
+                    if (emp.getCodigoEmpregado() == codigoBusca){
+                        textFieldNomeEmpregado.setText(emp.getNomeEmpregado());
+                        textFieldSetor.setText(emp.getSetor());
+                        textFieldSalarioBruto.setText(Double.toString(emp.getSalarioBruto()));
+                        LabelValorRecolhido.setText(Double.toString(emp.getRecInss()));
+                        System.out.println(emp);
+                        empregado = emp;
+                    }
+                }
+            }
+        });
+        deletarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    if(empregado!= null){
+                        GerenciarEmpregado.listaEmpregados.remove(empregado);
+                        LimparCampos();
+                        mensagemDeletado();
+                    }
+                }
+                catch (Exception erro){
+                    System.out.println(erro);
+                }
             }
         });
     }
@@ -82,7 +117,8 @@ public class EmpregadoGUI {
         }
     }
 
-    public double valorRecolhimentoInss(double salarioBruto){
+    public double valorRecolhimentoInss(double salarioBruto)
+    {
         double recolhimento = 0.0;
 
         // LIMITE FAIXA 1
@@ -143,7 +179,7 @@ public class EmpregadoGUI {
         textFieldNomeEmpregado.setText("");
         textFieldSetor.setText("");
         textFieldSalarioBruto.setText("");
-        LabelValorRecolhido.setText("");
+        LabelValorRecolhido.setText("0.000,00");
     }
 
     public boolean validaCampos(){
@@ -176,6 +212,13 @@ public class EmpregadoGUI {
         JOptionPane.showMessageDialog(null,
                 "Verifique as informações dos campos",
                 "Informações inválidas",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void mensagemDeletado(){
+        JOptionPane.showMessageDialog(null,
+                "Usuario deletado com sucesso",
+                "Deletado",
                 JOptionPane.INFORMATION_MESSAGE);
     }
 }

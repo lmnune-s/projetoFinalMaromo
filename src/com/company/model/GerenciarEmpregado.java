@@ -2,6 +2,7 @@ package com.company.model;
 
 import com.company.view.EmpregadoGUI;
 
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class GerenciarEmpregado {
 
     public void removerEmpregado(Empregado empregado){}
 
-    public boolean verificarExistencia(Empregado empregado){
+    public static boolean verificarExistencia(Empregado empregado){
         for (Empregado emp: listaEmpregados) {
             if(emp.getCodigoEmpregado() == (empregado.getCodigoEmpregado())){
                 System.out.println("Ja cadastrado");
