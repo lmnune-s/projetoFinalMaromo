@@ -3,16 +3,13 @@ package com.company.view;
 import com.company.model.Empregado;
 import com.company.model.GerenciarEmpregado;
 
-import javax.sql.RowSet;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GerenciarEmpregadosGUI {
     private JPanel panelEmpregados;
-    private JTable table1;
+    private JTable tableGerenciarEmp;
     private JScrollPane scrollPane1;
     public List<Empregado> listaEmpregados;
 
@@ -24,10 +21,10 @@ public class GerenciarEmpregadosGUI {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        String header[] = {"Codigo", "Nome", "Setor", "Salario Bruto", "Recolhimento"};
+        String header[] = {"Codigo", "Nome", "Setor", "Salario", "Recolhimento"};
         DefaultTableModel model = new DefaultTableModel(0,4);
         model.setColumnIdentifiers(header);
-        table1 = new JTable(model);
+        tableGerenciarEmp = new JTable(model);
         List<Empregado> empregados = GerenciarEmpregado.listaEmpregados;
         for (Empregado emp : empregados) {
             Object[] row = {emp.getCodigoEmpregado(), emp.getNomeEmpregado(), emp.getSetor(),

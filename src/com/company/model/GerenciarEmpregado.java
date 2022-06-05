@@ -2,38 +2,33 @@ package com.company.model;
 
 import com.company.view.EmpregadoGUI;
 
-import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciarEmpregado {
     public static List<Empregado> listaEmpregados = new ArrayList<Empregado>();
 
-    public void adcionarEmpregado(Empregado empregado){
+    public void adicionarEmpregado(Empregado empregado){
         if(verificarExistencia(empregado)){
             listaEmpregados.add(empregado);
-            EmpregadoGUI.mensagemSucesso();
+            EmpregadoGUI.successMessage();
         }else {
-            EmpregadoGUI.mensagemErro();
-            System.out.println("Usuario já Cadastrado!");
+            EmpregadoGUI.errorMessage();
+            System.out.println("Error: Usuário já cadastrado!");
         }
     }
 
-    public ArrayList listarTodosEmpregados(){
+    public ArrayList listaTodosEmpregados(){
         for (Empregado emp: listaEmpregados) {
             System.out.println(emp);
         }
-        System.out.println("-------------------");
-//        System.out.println(listaEmpregados);
         return (ArrayList) listaEmpregados;
     }
-
-    public void removerEmpregado(Empregado empregado){}
 
     public static boolean verificarExistencia(Empregado empregado){
         for (Empregado emp: listaEmpregados) {
             if(emp.getCodigoEmpregado() == (empregado.getCodigoEmpregado())){
-                System.out.println("Ja cadastrado");
+                System.out.println("Usuário já cadastrado!");
                 return false;
             }
         }

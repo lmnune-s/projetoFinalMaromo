@@ -1,6 +1,6 @@
 package com.company.model;
 
-public class ParametrosInss {
+public class Parametros {
     public double FAIXA1 = 0.075;
     public double LIMITEFAIXA1 = 1100.0;
     public double FAIXA2 = 0.09;

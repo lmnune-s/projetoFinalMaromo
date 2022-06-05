@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.company.view.EmpregadoGUI">
-  <grid id="27dc6" binding="JPanelTelaCadastro" layout-manager="GridLayoutManager" row-count="8" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="JPanelTelaCadastro" layout-manager="GridLayoutManager" row-count="7" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="16" left="16" bottom="16" right="16"/>
     <constraints>
-      <xy x="20" y="20" width="604" height="400"/>
+      <xy x="20" y="20" width="645" height="266"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -90,7 +90,7 @@
       </component>
       <component id="11762" class="javax.swing.JTextField" binding="textFieldCodigoEmpregado">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -106,18 +106,10 @@
       </component>
       <component id="b1f7e" class="javax.swing.JLabel" binding="LabelValorRecolhido">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="0.000,00"/>
-        </properties>
-      </component>
-      <component id="deebd" class="javax.swing.JButton" binding="buscarButton" default-binding="true">
-        <constraints>
-          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Buscar"/>
+          <text value="-"/>
         </properties>
       </component>
       <component id="9a30f" class="javax.swing.JButton" binding="apresentarEmpregadosButton" default-binding="true">
@@ -126,14 +118,6 @@
         </constraints>
         <properties>
           <text value="Apresentar Empregados"/>
-        </properties>
-      </component>
-      <component id="e10" class="javax.swing.JButton" binding="deletarButton" default-binding="true">
-        <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Deletar"/>
         </properties>
       </component>
     </children>

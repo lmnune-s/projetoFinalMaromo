@@ -11,7 +11,7 @@ public class GerenciarPrograma {
         telaCadastro.setContentPane(new EmpregadoGUI().getPanelTelaCadastro());
         telaCadastro.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         telaCadastro.setSize(550,370);
-        telaCadastro.setTitle("Calcula INSS");
+        telaCadastro.setTitle("Cadastro de Empregados");
         telaCadastro.setVisible(true);
     }
 }
